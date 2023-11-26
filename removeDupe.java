@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 //https://www.geeksforgeeks.org/preconditions-guava-java/# where preconditon came from
@@ -20,16 +21,24 @@ public class removeDupe {
 		
 		System.out.println("List size = "+ numbers.size() + " List = "+numbers+ "\n");
 		
-		removeDuplicates(numbers);
 		
-		//Create another list that is null and send it to removeDuplicates
+		
+		//Create another list that is null and send it to removeDuplicates, Must be int
 		List<Integer> numbers_Null = new ArrayList<>();
+		try
+		{
+		removeDuplicates(numbers);
 		removeDuplicates(numbers_Null);
+		}
+		catch(InputMismatchException e)
+		{
+			System.out.println("Wrong type");
+		}
 		
 		
 	}
 
-	public static void removeDuplicates(List lst) 
+	public static void removeDuplicates(List<Integer> lst) 
 	{
 		if (lst == null || lst.size() <= 1) 
 			{
